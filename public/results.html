@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Apuração — Cédula de Confiança</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="screen active">
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-btn" style="text-decoration:none;font-size:17px;">&#8249; Voltar</a>
+    <span class="nav-title">Apuração</span>
+    <span class="nav-badge" id="nav-count"></span>
+  </nav>
+
+  <div class="scroll-area" style="padding-bottom:40px;">
+
+    <div class="section" style="margin-top:24px;margin-bottom:20px;">
+      <div class="results-large-title" style="padding:0 4px;">Resultado</div>
+      <div class="results-sub" style="padding:0 4px;">Indicações por cargo</div>
+    </div>
+
+    <div class="section" style="margin-top:0;">
+      <div class="section-body">
+        <div class="quorum-card" id="quorum-card">
+          <div class="quorum-square" id="quorum-square"></div>
+          <div style="flex:1;min-width:0;">
+            <div class="quorum-label-text" id="quorum-label">Carregando</div>
+            <div class="quorum-value-text" id="quorum-value">—</div>
+            <div class="quorum-dots" id="quorum-dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="results-area"></div>
+
+  </div>
+</div>
+
+<script>
+const TOTAL = 11;
+
+function buildDots(count) {
+  const wrap = document.getElementById('quorum-dots');
+  wrap.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('span');
+    d.className = 'quorum-dot' + (i < count ? ' voted' : '');
+    wrap.appendChild(d);
+  }
+}
+
+function renderWaiting(count) {
+  document.getElementById('nav-count').textContent = count + '/' + TOTAL;
+  document.getElementById('quorum-label').textContent = 'Aguardando quórum';
+  document.getElementById('quorum-value').textContent = count + ' de ' + TOTAL + ' votos recebidos';
+  document.getElementById('quorum-square').style.background = '#8E8E93';
+  buildDots(count);
+
+  document.getElementById('results-area').innerHTML = `
+    <div class="section">
+      <div class="section-body">
+        <div class="waiting-state">
+          <div class="waiting-title">Votação em Andamento</div>
+          <div class="waiting-body">Os resultados serão liberados automaticamente após todos os ${TOTAL} membros votarem.</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderResults(data) {
+  document.getElementById('nav-count').textContent = TOTAL + '/' + TOTAL;
+  document.getElementById('quorum-label').textContent = 'Apuração concluída';
+  document.getElementById('quorum-value').textContent = 'Todos os ' + TOTAL + ' votos recebidos';
+  document.getElementById('quorum-square').style.background = '#000';
+  buildDots(TOTAL);
+
+  const area = document.getElementById('results-area');
+  area.innerHTML = '';
+
+  data.positions.forEach(function(pos, idx) {
+    const rows = data.results[pos.id] || [];
+    const maxVotes = rows[0] ? rows[0].count : 1;
+
+    const section = document.createElement('div');
+    section.className = 'section';
+    section.innerHTML =
+      '<div class="section-header">Cargo ' + String(idx + 1).padStart(2, '0') + '</div>' +
+      '<div class="result-pos-card">' +
+        '<div class="result-pos-header">' +
+          '<div class="result-pos-tag">' + pos.title + '</div>' +
+        '</div>' +
+        (rows.length === 0
+          ? '<div style="padding:16px;font-size:14px;color:var(--label4);">Nenhum voto registrado</div>'
+          : rows.map(function(r, ri) {
+              const pct = Math.round((r.count / maxVotes) * 100);
+              return '<div class="result-entry">' +
+                '<div class="result-rank' + (ri === 0 ? ' first' : '') + '">' + (ri + 1) + '</div>' +
+                '<div class="result-name">' + r.name + '</div>' +
+                '<div class="result-bar-col">' +
+                  '<div class="result-votes">' + r.count + '</div>' +
+                  '<div class="result-bar-track">' +
+                    '<div class="result-bar-fill" style="width:' + pct + '%"></div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>';
+            }).join('')
+        ) +
+      '</div>';
+    area.appendChild(section);
+  });
+}
+
+async function load() {
+  try {
+    const res = await fetch('/api/results');
+    const data = await res.json();
+    if (data.ready) {
+      renderResults(data);
+    } else {
+      renderWaiting(data.votesCount || 0);
+      setTimeout(load, 20000);
+    }
+  } catch(e) {
+    setTimeout(load, 10000);
+  }
+}
+
+load();
+</script>
+</body>
+</html>

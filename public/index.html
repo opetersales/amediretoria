@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Cédula">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Cédula de Confiança</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Loading ─────────────────────────────────────────── -->
+<div id="screen-loading" class="screen active">
+  <div class="loading-wordmark">Cédula</div>
+  <div class="spinner" style="border-color:rgba(0,0,0,.12);border-top-color:#000;"></div>
+</div>
+
+<!-- ── Already Voted ───────────────────────────────────── -->
+<div id="screen-voted" class="screen">
+  <div class="voted-circle">
+    <span class="voted-check">&#10003;</span>
+  </div>
+  <h2 class="confirm-title">Voto já registrado</h2>
+  <p class="confirm-body">Este dispositivo já participou da votação. Cada aparelho permite um único registro.</p>
+  <a href="results.html" class="confirm-link">Ver Apuração</a>
+</div>
+
+<!-- ── Onboarding ──────────────────────────────────────── -->
+<div id="screen-onboarding" class="screen">
+
+  <div class="ob-track-wrap">
+    <div class="ob-track" id="ob-track">
+
+      <!-- ── Slide 1: Apresentação ── -->
+      <div class="ob-slide">
+        <div class="ob-art">
+          <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Documento / cédula -->
+            <rect x="28" y="16" width="104" height="128" rx="6" stroke="#000" stroke-width="2"/>
+            <!-- Linhas de texto -->
+            <line x1="46" y1="48"  x2="114" y2="48"  stroke="#000" stroke-width="2"   stroke-linecap="round"/>
+            <line x1="46" y1="66"  x2="114" y2="66"  stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity=".35"/>
+            <line x1="46" y1="82"  x2="98"  y2="82"  stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity=".35"/>
+            <line x1="46" y1="98"  x2="114" y2="98"  stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity=".35"/>
+            <line x1="46" y1="114" x2="86"  y2="114" stroke="#000" stroke-width="1.5" stroke-linecap="round" opacity=".35"/>
+            <!-- Checkmark no canto inferior direito -->
+            <circle cx="112" cy="112" r="14" fill="#000"/>
+            <polyline points="105,112 110,118 120,106" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="ob-text">
+          <div class="ob-tag">Processo Institucional</div>
+          <h2 class="ob-title">Cédula de Confiança</h2>
+          <p class="ob-body">Este processo existe para que a diretoria seja formada a partir de uma avaliação coletiva e imparcial. Cada um dos 11 membros indica, de forma independente, quem considera mais compatível com o perfil de cada cargo.<br><br>O resultado final reflete o julgamento do grupo. Não de uma única pessoa ou de um grupo de influência. É uma ferramenta de legitimidade, não de votação popular.</p>
+        </div>
+      </div>
+
+      <!-- ── Slide 2: Como funciona ── -->
+      <div class="ob-slide">
+        <div class="ob-art">
+          <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 6 barras representando os 6 cargos; as 2 primeiras preenchidas -->
+            <rect x="16" y="14"  width="128" height="18" rx="4" fill="#000"/>
+            <rect x="16" y="40"  width="128" height="18" rx="4" fill="#000"/>
+            <rect x="16" y="66"  width="128" height="18" rx="4" stroke="#000" stroke-width="1.5"/>
+            <rect x="16" y="92"  width="128" height="18" rx="4" stroke="#000" stroke-width="1.5"/>
+            <rect x="16" y="118" width="128" height="18" rx="4" stroke="#000" stroke-width="1.5"/>
+            <rect x="16" y="144" width="128" height="12" rx="4" stroke="#000" stroke-width="1.5" opacity=".35"/>
+            <!-- checks nas preenchidas -->
+            <polyline points="30,23 36,29 50,17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <polyline points="30,49 36,55 50,43" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="ob-text">
+          <div class="ob-tag">Estrutura da Votação</div>
+          <h2 class="ob-title">Seis cargos. Uma indicação cada.</h2>
+          <p class="ob-body">Para cada cargo, você encontrará uma descrição detalhada do que se espera de quem o exerce: as responsabilidades do dia a dia, o perfil comportamental e as habilidades práticas mais relevantes.<br><br>Depois de ler, você indica quem acredita ter mais compatibilidade com aquele perfil. É possível indicar o mesmo membro para mais de um cargo, se você considerar que ele se encaixa em ambos.</p>
+        </div>
+      </div>
+
+      <!-- ── Slide 3: Anonimato ── -->
+      <div class="ob-slide">
+        <div class="ob-art">
+          <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Corpo do cadeado -->
+            <rect x="40" y="78" width="80" height="66" rx="8" stroke="#000" stroke-width="2"/>
+            <!-- Argola -->
+            <path d="M58 78 L58 54 Q58 24 80 24 Q102 24 102 54 L102 78" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- Buraco da fechadura -->
+            <circle cx="80" cy="106" r="8" stroke="#000" stroke-width="1.8"/>
+            <line x1="80" y1="114" x2="80" y2="126" stroke="#000" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="ob-text">
+          <div class="ob-tag">Privacidade</div>
+          <h2 class="ob-title">Seu voto é completamente anônimo.</h2>
+          <p class="ob-body">No momento do envio, a sua indicação é separada definitivamente da sua identidade. O sistema armazena apenas as escolhas, sem registrar quem as fez. Nem quem organiza este processo tem acesso a essa informação.<br><br>O sigilo é técnico, não apenas uma promessa. Cada dispositivo é identificado por um código único gerado localmente, que é descartado no momento em que o voto é registrado.</p>
+        </div>
+      </div>
+
+      <!-- ── Slide 4: Critério ── -->
+      <div class="ob-slide">
+        <div class="ob-art">
+          <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Alvo / foco -->
+            <circle cx="80" cy="80" r="62" stroke="#000" stroke-width="1.5" opacity=".12"/>
+            <circle cx="80" cy="80" r="44" stroke="#000" stroke-width="1.5" opacity=".25"/>
+            <circle cx="80" cy="80" r="26" stroke="#000" stroke-width="1.5" opacity=".5"/>
+            <circle cx="80" cy="80" r="12" fill="#000"/>
+            <!-- Seta apontando para o centro -->
+            <line x1="130" y1="30" x2="94" y2="66" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+            <polyline points="96,58 94,68 104,66" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="ob-text">
+          <div class="ob-tag">Critério de Escolha</div>
+          <h2 class="ob-title">Competência, não afinidade.</h2>
+          <p class="ob-body">A pergunta que guia cada escolha é: quem tem mais compatibilidade com o perfil deste cargo? Não quem você prefere pessoalmente, não quem votaria em você em troca. Mas quem, pelas suas características e habilidades reais, está mais preparado para exercer aquela função.<br><br>Essa distinção é o que dá legitimidade ao processo e garante que a diretoria escolhida seja a mais capaz, não a mais popular.</p>
+          <button id="btn-start" class="btn-ios btn-primary" type="button" style="margin-top:24px;">
+            Iniciar Votação
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dots + Continuar -->
+  <div class="ob-footer">
+    <div class="ob-dots" id="ob-dots">
+      <span class="ob-dot active"></span>
+      <span class="ob-dot"></span>
+      <span class="ob-dot"></span>
+      <span class="ob-dot"></span>
+    </div>
+    <button class="ob-next-btn" id="ob-next" type="button">Continuar</button>
+  </div>
+
+</div>
+
+<!-- ── Vote ────────────────────────────────────────────── -->
+<div id="screen-vote" class="screen">
+
+  <nav class="nav-bar">
+    <button class="nav-btn" id="btn-back-vote" type="button">&#8249; Voltar</button>
+    <span class="nav-title">Indicação</span>
+    <span class="nav-badge" id="vote-progress">0 / 6</span>
+  </nav>
+
+  <div class="scroll-area" id="vote-scroll">
+
+    <div class="section" style="margin-top:20px;">
+      <div class="section-body" style="padding:14px 16px;">
+        <p style="font-size:13px;color:var(--label3);line-height:1.65;">
+          Para cada cargo, leia o perfil esperado e então indique quem você considera mais compatível. A escolha deve ser pautada estritamente na <strong style="color:var(--label2);">competência técnica e aptidão profissional</strong>, não em afinidade pessoal.
+        </p>
+      </div>
+    </div>
+
+    <div id="positions-container"></div>
+
+  </div>
+
+  <div class="bottom-cta">
+    <button id="btn-submit" class="btn-ios btn-primary" type="button" disabled>
+      Confirmar e Enviar Voto
+    </button>
+  </div>
+
+</div>
+
+<!-- ── Confirm ─────────────────────────────────────────── -->
+<div id="screen-confirm" class="screen">
+  <div class="confirm-circle">
+    <span class="confirm-check">&#10003;</span>
+  </div>
+  <h2 class="confirm-title">Voto Registrado</h2>
+  <p class="confirm-body">Sua cédula foi computada com sucesso. O processo é anônimo e irreversível.</p>
+  <a href="results.html" class="confirm-link">Ver Apuração</a>
+</div>
+
+<!-- ── Toast ───────────────────────────────────────────── -->
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
