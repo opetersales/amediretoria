@@ -135,6 +135,7 @@ body {
   text-transform: uppercase;
   letter-spacing: .07em;
   padding: 0 4px 8px;
+  text-align: center;
 }
 .section-footer {
   font-size: 13px;
@@ -166,7 +167,9 @@ body {
 .list-row:last-child { border-bottom: none; }
 .list-row:active { background: var(--gray7); }
 
-.row-content { flex: 1; min-width: 0; }
+.row-content {
+  text-align: center;
+}
 .row-label {
   font-size: 16px;
   font-weight: 500;
@@ -175,24 +178,23 @@ body {
 .row-value {
   font-size: 14px;
   color: var(--label3);
-  margin-top: 1px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 160px;
+  margin-top: 2px;
 }
 .row-value.selected {
   color: var(--label);
   font-weight: 500;
 }
 .row-chevron {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--gray5);
   font-size: 18px;
-  flex-shrink: 0;
   transition: transform .25s var(--spring);
   line-height: 1;
 }
-.list-row.open .row-chevron { transform: rotate(90deg); }
+.list-row.open .row-chevron { transform: translateY(-50%) rotate(90deg); }
 
 /* ── Expandable ──────────────────────────────────────────────── */
 .expandable {
@@ -232,11 +234,13 @@ body {
   letter-spacing: .08em;
   color: var(--label4);
   margin-bottom: 10px;
+  text-align: center;
 }
 .skills-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+  justify-content: center;
 }
 .skill-chip {
   font-size: 13px;
@@ -260,6 +264,7 @@ body {
   color: var(--label4);
   border-bottom: .5px solid var(--sep);
   background: var(--white);
+  text-align: center;
 }
 .compatibility-label strong {
   text-transform: none;
@@ -270,10 +275,11 @@ body {
 
 /* ── Instruction text (vote screen top) ─────────────────────── */
 .vote-instruction {
-  padding: 20px 20px 8px;
+  padding: 20px 28px 8px;
   font-size: 13px;
   color: var(--label4);
   line-height: 1.65;
+  text-align: center;
 }
 .vote-instruction strong {
   color: var(--label3);
