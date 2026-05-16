@@ -174,10 +174,9 @@ function buildVoteForm() {
     const section = document.createElement('div');
     section.className = 'section';
     section.innerHTML = `
-      <div class="section-header">Cargo ${String(idx + 1).padStart(2,'0')} de ${positions.length}</div>
+      <div class="section-header">Cargo ${String(idx + 1).padStart(2,'0')}</div>
       <div class="section-body">
         <div class="list-row" id="row-${pos.id}" data-pos="${pos.id}" data-idx="${idx}">
-          <div class="row-num" id="num-${pos.id}">${idx + 1}</div>
           <div class="row-content">
             <div class="row-label">${pos.title}</div>
             <div class="row-value" id="val-${pos.id}">Toque para indicar</div>
@@ -196,10 +195,10 @@ function buildVoteForm() {
               ${pos.skills.map(s => `<span class="skill-chip">${s}</span>`).join('')}
             </div>
           </div>` : ''}
-          <div class="ob-compatibility-label">
+          <div class="compatibility-label">
             Quem tem mais compatibilidade com o perfil de <strong>${pos.title}</strong>?
           </div>
-          <div id="grid-${pos.id}"></div>
+          <div id="grid-${pos.id}" class="member-grid"></div>
         </div>
       </div>
     `;

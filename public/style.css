@@ -153,8 +153,8 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
-  min-height: 52px;
+  padding: 14px 16px;
+  min-height: 56px;
   border-bottom: .5px solid var(--sep);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -165,26 +165,6 @@ body {
 }
 .list-row:last-child { border-bottom: none; }
 .list-row:active { background: var(--gray7); }
-
-.row-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--gray5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--label3);
-  flex-shrink: 0;
-  transition: background .2s, border-color .2s, color .2s;
-}
-.list-row.filled .row-num {
-  background: var(--black);
-  border-color: var(--black);
-  color: var(--white);
-}
 
 .row-content { flex: 1; min-width: 0; }
 .row-label {
@@ -226,9 +206,9 @@ body {
   font-size: 13px;
   color: var(--label3);
   line-height: 1.65;
-  padding: 14px 16px;
+  padding: 16px 16px 14px;
   border-bottom: .5px solid var(--sep);
-  background: var(--gray7);
+  background: var(--white);
 }
 .expand-desc-label {
   font-size: 10px;
@@ -271,56 +251,75 @@ body {
 }
 
 /* ── Compatibility question label ───────────────────────────── */
-.ob-compatibility-label {
-  padding: 12px 16px 10px;
-  font-size: 13px;
-  color: var(--label3);
+.compatibility-label {
+  padding: 14px 16px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--label4);
   border-bottom: .5px solid var(--sep);
   background: var(--white);
-  line-height: 1.5;
 }
-.ob-compatibility-label strong {
-  color: var(--label);
+.compatibility-label strong {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--label3);
+}
+
+/* ── Instruction text (vote screen top) ─────────────────────── */
+.vote-instruction {
+  padding: 20px 20px 8px;
+  font-size: 13px;
+  color: var(--label4);
+  line-height: 1.65;
+}
+.vote-instruction strong {
+  color: var(--label3);
   font-weight: 600;
 }
 
-/* ── Check rows (member selection) ──────────────────────────── */
+/* ── Member grid (2-column pills) ────────────────────────────── */
+.member-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 14px;
+  background: var(--white);
+}
+
 .check-row {
   display: flex;
   align-items: center;
-  padding: 13px 16px;
-  min-height: 48px;
-  border-bottom: .5px solid var(--sep);
+  justify-content: center;
+  padding: 11px 10px;
+  border-radius: var(--r-lg);
+  background: var(--gray7);
+  border: 1.5px solid transparent;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  background: var(--white);
-  transition: background .1s var(--spring);
-  gap: 12px;
+  transition: background .15s var(--spring), border-color .15s var(--spring);
+  min-height: 0;
+  gap: 0;
 }
-.check-row:last-child { border-bottom: none; }
-.check-row:active { background: var(--gray7); }
+.check-row:active { opacity: .7; }
+.check-row.selected {
+  background: var(--black);
+  border-color: var(--black);
+}
 .check-row-label {
-  flex: 1;
-  font-size: 16px;
-  color: var(--label);
-  font-weight: 400;
-}
-.check-mark {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 15px;
-  font-weight: 600;
-  color: var(--black);
-  opacity: 0;
-  transition: opacity .15s;
-  flex-shrink: 0;
+  color: var(--label);
+  font-weight: 500;
+  text-align: center;
 }
-.check-row.selected .check-mark { opacity: 1; }
-.check-row.selected .check-row-label { font-weight: 600; }
+.check-row.selected .check-row-label {
+  color: var(--white);
+  font-weight: 600;
+}
+.check-mark { display: none; }
 
 /* ── Bottom CTA ──────────────────────────────────────────────── */
 .bottom-cta {
