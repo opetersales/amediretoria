@@ -25,7 +25,7 @@ const POSITIONS = [
 
 No dia a dia, a função exige presença ativa: acompanhar o andamento de cada área da diretoria, garantir que as decisões tomadas em reunião sejam de fato executadas, cobrar responsabilidades sem gerar atrito desnecessário e manter o grupo coeso mesmo em momentos de divergência.
 
-Mais do que qualquer habilidade técnica, o cargo exige algo mais difícil de aprender: a capacidade de liderar pessoas com perfis muito diferentes, de tomar decisões sob pressão e de falar pelo grupo de forma que todos se sintam representados. O presidente que funciona bem é aquele que a diretoria respeita. Não porque impõe, mas porque inspira.`,
+Mais do que qualquer habilidade técnica, o cargo exige algo mais difícil de aprender: a capacidade de liderar pessoas com perfis muito diferentes, de tomar decisões sob pressão e de falar pelo grupo de forma que todos se sintam representados. O presidente que funciona bem é aquele que a diretoria respeita.`,
     skills: [
       "Liderança de grupo",
       "Comunicação clara",
